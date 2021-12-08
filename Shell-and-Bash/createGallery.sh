@@ -2,11 +2,10 @@
 
 ext=('jpg' 'gif' 'png' 'jpeg')
 i=1
-#year=2020
+year=2020
 timeHM=$(date "+%H%M")
 
 Random_gen(){
-  rand_year=$(($RANDOM % 2019 + 2000))
   rand_month=$(($RANDOM % 11 + 2))
   rand_day=$(($RANDOM % 30 + 2))
   rand_ext=$(($RANDOM % 4 ))
@@ -18,11 +17,10 @@ Random_gen(){
     rand_month=0$rand_month
   fi
 
-  touch -t $rand_year$rand_month$rand_day$timeHM file$i.${ext[$rand_ext]}
+  touch -t $year$rand_month$rand_day$timeHM Gallery/file$i.${ext[$rand_ext]}
 }
 
-mkdir gallery
-cd gallery
+mkdir Gallery
 
 while (( $i <= 1000 )); do
   Random_gen
