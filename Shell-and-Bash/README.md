@@ -1,4 +1,4 @@
-"Gallery Organizer"
+## Gallery Organizer
 
 1. Create a script that will populate a directory called gallery with 1000 random files as follows:
 - they have random creation times in the past year
