@@ -7,7 +7,7 @@ for i in ${ext[@]}; do
     if [[ $file == *.$i ]]; then
       data=$(date -r $file "+%Y%m")
       mkdir -p organizedGallery/$i/$data
-      mv $file organizedGallery/$i/$data
+      mv -n $file organizedGallery/$i/$data
     fi
   done
 done
