@@ -1,0 +1,10 @@
+{
+  "name": "Paris",
+  "region": "Ile-de-France",
+  "country": "France",
+  "lat": 48.87,
+  "lon": 2.33,
+  "tz_id": "Europe/Paris",
+  "localtime_epoch": 1639399892,
+  "localtime": "2021-12-13 13:51"
+}
