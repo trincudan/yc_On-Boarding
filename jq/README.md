@@ -1,4 +1,4 @@
-** AEM Users Report
+## AEM Users Report
 
 1. From the authorizables.json (it will be provided) create a csv file using jq that will have the following header.
 UserID, FirstName, LastName, Email, CreationDate, CreatedBy, TimeStamp
