@@ -1,0 +1,103 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "PC",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "label": "mobile",
+      "width": 414,
+      "height": 896
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "URL0001",
+      "cookiePath": "",
+      "url": "http://localhost:4502/content/platform/global/demo-site-1/en.html",
+      "referenceUrl": "http://localhost:4502/content/platform/global/demo-site-1/en.html",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold": 0.1,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "URL0002",
+      "cookiePath": "",
+      "url": "http://localhost:4502/content/platform/global/demo-site-1/en/blog-page.html",
+      "referenceUrl": "http://localhost:4502/content/platform/global/demo-site-1/en.html",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold": 0.1,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "URL0003",
+      "cookiePath": "",
+      "url": "http://localhost:4502/content/platform/global/demo-site-1/en/events.html",
+      "referenceUrl": "http://localhost:4502/content/platform/global/demo-site-1/en.html",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold": 0.1,
+      "requireSameDimensions": true
+    },
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": [
+    "CI"
+  ],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "ignoreHTTPSErrors": true,
+    "slowMo": 500,
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-gpu",
+      "--force-device-scale-factor=1",
+      "--disable-infobars=true",
+      "--hide-scrollbars"
+    ]
+  },
+  "asyncCaptureLimit": 10,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
