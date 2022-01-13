@@ -95,4 +95,4 @@ backstop latest
 
 # FALCON TEST 
 
-cd "$AEMpath"/aem-falcon-tests/ && mvn clean verify -Pgold_dev,all_sites -Dcucumber.option="--tags @PMCCP-9405"
+cd "$AEMpath"/aem-falcon-tests/ && mvn clean verify -Plocal_6_4,all_sites -Dcucumber.option="--tags @PMCCP-9405"
