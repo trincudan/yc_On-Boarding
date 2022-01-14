@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html><head>
+    <style type="text/css">
+        body {
+            background-color: white;
+            font-family: verdana, arial, sans-serif;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        div {
+            font-family: courier, monospace;
+            font-size: 11px;
+        }
+    </style>
+    <script type="text/javascript">
+        function onStatus(pid, stat, p, max, msg) {
+            window.parent.cqPackageShareClient.onStatus(pid, stat, p, max, msg);
+            window.scrollTo(0, 1000000);
+        }
+    </script></head>
+<body><br><span class="error">Error during processing.</span><br><code><pre>
+java.lang.IllegalArgumentException: no package
+	at com.day.crx.packaging.impl.J2EEPackageManager.getPackage(J2EEPackageManager.java:231)
+	at com.day.crx.packaging.impl.J2EEPackageManager.doPost(J2EEPackageManager.java:189)
+	at com.day.crx.packaging.impl.PackageManagerServlet.doPost(PackageManagerServlet.java:151)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:644)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:725)
+	at org.apache.felix.http.base.internal.handler.ServletHandler.handle(ServletHandler.java:123)
+	at org.apache.felix.http.base.internal.dispatch.InvocationChain.doFilter(InvocationChain.java:86)
+	at com.adobe.granite.license.impl.LicenseCheckFilter.doFilter(LicenseCheckFilter.java:308)
+	at org.apache.felix.http.base.internal.handler.FilterHandler.handle(FilterHandler.java:142)
+	at org.apache.felix.http.base.internal.dispatch.InvocationChain.doFilter(InvocationChain.java:81)
+	at org.apache.felix.http.sslfilter.internal.SslFilter.doFilter(SslFilter.java:96)
+	at org.apache.felix.http.base.internal.handler.FilterHandler.handle(FilterHandler.java:142)
+	at org.apache.felix.http.base.internal.dispatch.InvocationChain.doFilter(InvocationChain.java:81)
+	at org.apache.sling.i18n.impl.I18NFilter.doFilter(I18NFilter.java:131)
+	at org.apache.felix.http.base.internal.handler.FilterHandler.handle(FilterHandler.java:142)
+	at org.apache.felix.http.base.internal.dispatch.InvocationChain.doFilter(InvocationChain.java:81)
+	at org.apache.felix.http.base.internal.dispatch.Dispatcher$1.doFilter(Dispatcher.java:146)
+	at org.apache.felix.http.base.internal.whiteboard.WhiteboardManager$2.doFilter(WhiteboardManager.java:1002)
+	at org.apache.sling.security.impl.ReferrerFilter.doFilter(ReferrerFilter.java:326)
+	at org.apache.felix.http.base.internal.handler.PreprocessorHandler.handle(PreprocessorHandler.java:136)
+	at org.apache.felix.http.base.internal.whiteboard.WhiteboardManager$2.doFilter(WhiteboardManager.java:1008)
+	at org.apache.felix.http.base.internal.whiteboard.WhiteboardManager.invokePreprocessors(WhiteboardManager.java:1012)
+	at org.apache.felix.http.base.internal.dispatch.Dispatcher.dispatch(Dispatcher.java:91)
+	at org.apache.felix.http.base.internal.dispatch.DispatcherServlet.service(DispatcherServlet.java:49)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:725)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:755)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:547)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1607)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1297)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:485)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1577)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1212)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:221)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:500)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:547)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:270)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:388)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></code><script type="text/javascript">
+window.scrollTo(0, 1000000);
+</script>
+</body></html>
