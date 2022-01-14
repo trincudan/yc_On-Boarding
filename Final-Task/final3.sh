@@ -2,7 +2,7 @@
 
 AEMpath="/Users/datr1605/repos/aem-core"
 URL="http://localhost:4502/crx/packmgr/service/.json"
-LogsPath="/Users/datr1605/Documents/On_Boarding/yc_On-Boarding/Final-Task/logs"
+LogsPath=$(pwd)
 
 input_package (){
   file=''
@@ -12,14 +12,15 @@ input_package (){
     echo "We can't continue with an empty string."
     break
   fi
+  mkdir -p "$LogsPath"/logs
   echo -e "\nSearching..\n\n"
 }
 
 build_package (){
   read -n1 -rp "Do you want to BUILD ${package} ? [Y/n] : " response; echo -e "\n"
   if [[ "$response" =~ ^(y|Y)$ ]]; then
-    touch logs/build-"$package".log
-    cd "$AEMpath"/${package} && mvn clean package -P6_4 | tee "$LogsPath"/build-"$package".log
+    touch "$LogsPath"/build-"$package".log
+    cd "$AEMpath"/${package} && mvn clean package -P6_4 | tee "$LogsPath"/logs/build-"$package".log
   elif [[ "$response" =~ ^(n|N)$ ]]; then
     upload_package
   else
@@ -32,17 +33,18 @@ build_package (){
 upload_package (){
   read -n1 -rp "Do you want to UPLOAD ${package} ? [Y/n] : " response; echo -e "\n"
   if [[ "$response" =~ ^(y|Y)$ ]]; then
-    touch logs/upload-"$package".log
+    echo $LogsPath
+    touch $LogsPath/upload-"$package".log
     echo -e "Searching for zip file..\n"
     packageZip=`find "${AEMpath}" -name "*${package}*.zip"`
     echo -e "Zip found! : ${packageZip}\n"
     curl -u admin:admin \
-      -F package=@"$packageZip" "$URL"/\?cmd\=upload | tee "$LogsPath"/upload-"$package".log
+      -F package=@"$packageZip" "$URL"/\?cmd\=upload | tee "$LogsPath"/logs/upload-"$package".log >/dev/null
     if test $? -ne 0; then
     echo "Upload failed."
     exit 0
     fi
-    packagePath=`cat "$LogsPath"/upload-"$package".log | jq -r '.path'`
+    packagePath=`cat "$LogsPath"/logs/upload-"$package".log | jq -r '.path'`
   elif [[ "$response" =~ ^(n|N)$ ]]; then
     install_package
   else
@@ -55,10 +57,10 @@ upload_package (){
 install_package (){
   read -n1 -rp "Do you want to INSTALL ${package} ? [Y/n] : " response; echo -e "\n"
   if [[ "$response" =~ ^(y|Y)$ ]]; then
-  touch logs/install-"$package".log
-  packagePath=`cat "$LogsPath"/upload-"$package".log | jq -r '.path'`
+  touch "$LogsPath"/install-"$package".log
+  packagePath=`cat "$LogsPath"/logs/upload-"$package".log | jq -r '.path'`
   curl -s -u admin:admin \
-    -X POST "$URL""$packagePath"\?cmd\=install | tee "$LogsPath"/install-"$package".log
+    -X POST "$URL""$packagePath"\?cmd\=install | tee "$LogsPath"/logs/install-"$package".log
   if test $? -ne 0; then
     echo "Install failed."
     exit 0
